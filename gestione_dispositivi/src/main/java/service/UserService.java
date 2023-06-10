@@ -1,6 +1,7 @@
 package service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -20,10 +21,10 @@ public class UserService {
 
 	}
 
-//qui il controller(l'utente ci andrà a mettere lo username che cerca)
-	public User user(String username) {
+//qui il controller/l'utente ci andrà a mettere lo username che cerca)
+	public Optional<User> getByUsername(String username) {
 
-		return userRepository.getReferenceById(username);
+		return userRepository.findById(username);
 
 	}
 
@@ -34,9 +35,9 @@ public class UserService {
 
 	public void addUser(UserPayload userPayload) throws Exception {
 
-		User user1 = user(userPayload.getUsername());
+		Optional<User> user1 = getByUsername(userPayload.getUsername());
 
-		if (user1 == null) {
+		if (user1.isEmpty()) {
 			User user = new User();
 
 			user.setUsername(userPayload.getUsername());
@@ -53,14 +54,14 @@ public class UserService {
 
 	public void putUser(UserPayload userPayload) throws UserAlreadyPresentException {
 
-		User user = user(userPayload.getUsername());
+		Optional<User> user = getByUsername(userPayload.getUsername());
 
-		if (user != null) {
-
-			user.setName(userPayload.getName());
-			user.setSurname(userPayload.getSurname());
-			user.setEmail(userPayload.getEmail());
-			userRepository.save(user);
+		if (user.isPresent()) {
+			User user1 = user.get();
+			user1.setName(userPayload.getName());
+			user1.setSurname(userPayload.getSurname());
+			user1.setEmail(userPayload.getEmail());
+			userRepository.save(user1);
 		} else {
 			throw new UserAlreadyPresentException();
 		}

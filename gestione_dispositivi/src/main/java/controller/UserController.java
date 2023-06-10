@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,19 +31,19 @@ public class UserController {
 	public ResponseEntity<List<User>> getUsers() {
 
 		List<User> users = userService.listUser();
-		return new ResponseEntity(users, HttpStatus.OK);
+		return new ResponseEntity<>(users, HttpStatus.OK);
 	}
 
 	@GetMapping("/{username}")
 	public ResponseEntity<User> getUser(@RequestParam String username) {
 
-		User user1 = userService.user(username);
+		Optional<User> user1 = userService.getByUsername(username);
 
-		if (user1 == null) {
-			return new ResponseEntity(HttpStatus.NOT_FOUND);
+		if (user1.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 
-		return new ResponseEntity(user1, HttpStatus.OK);
+		return new ResponseEntity<>(user1.get(), HttpStatus.OK);
 
 	}
 
@@ -51,9 +52,9 @@ public class UserController {
 
 		try {
 			userService.addUser(userPayload);
-			return new ResponseEntity("utente aggiunto correttamente", HttpStatus.CREATED);
+			return new ResponseEntity<>("utente aggiunto correttamente", HttpStatus.CREATED);
 		} catch (Exception e) {
-			return new ResponseEntity("impossibile aggiunge l'utente", HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>("impossibile aggiunge l'utente", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
 	}
@@ -62,7 +63,7 @@ public class UserController {
 	public ResponseEntity deleteUser(@RequestParam String username) {
 
 		userService.deleteUser(username);
-		return new ResponseEntity("utente eliminato correttamente", HttpStatus.OK);
+		return new ResponseEntity<>("utente eliminato correttamente", HttpStatus.OK);
 	}
 
 	@PutMapping("/put/{username}")
@@ -70,9 +71,9 @@ public class UserController {
 
 		try {
 			userService.putUser(userPayload);
-			return new ResponseEntity("utente aggiornato correttamente", HttpStatus.OK);
+			return new ResponseEntity<>("utente aggiornato correttamente", HttpStatus.OK);
 		} catch (UserAlreadyPresentException myException) {
-			return new ResponseEntity("impossibile modificare l'utente", HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>("impossibile modificare l'utente", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 }

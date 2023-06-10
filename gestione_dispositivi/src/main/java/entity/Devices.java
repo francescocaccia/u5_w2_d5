@@ -10,13 +10,10 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Table;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
 @Entity
 @NoArgsConstructor
 @Table
@@ -29,6 +26,30 @@ public class Devices {
 	@Enumerated(EnumType.STRING)
 	Status status;
 	@Id
+	@GeneratedValue
 	UUID id;
+
+	public void setType(Type type) {
+
+		this.type = type;
+
+	}
+
+	public void setStatus(Status status) {
+
+		this.status = status;
+
+	}
+
+	public Status getStatus() {
+
+		return status;
+
+	}
+
+	public Type getType() {
+
+		return type;
+	}
 
 }
