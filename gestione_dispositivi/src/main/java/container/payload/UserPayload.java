@@ -1,4 +1,4 @@
-package payload;
+package container.payload;
 
 import javax.validation.constraints.NotBlank;
 

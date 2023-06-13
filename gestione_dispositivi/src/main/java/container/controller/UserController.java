@@ -1,4 +1,4 @@
-package controller;
+package container.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import entity.User;
-import exception.UserAlreadyPresentException;
-import payload.UserPayload;
-import service.UserService;
+import container.entity.User;
+import container.exception.UserAlreadyPresentException;
+import container.payload.UserPayload;
+import container.service.UserService;
 
 @RestController
 @RequestMapping("/user")

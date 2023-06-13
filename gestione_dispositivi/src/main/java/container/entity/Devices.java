@@ -1,21 +1,19 @@
-package entity;
-
-import java.util.UUID;
+package container.entity;
 
 import org.springframework.data.annotation.Id;
 
-import entity.enums.Status;
-import entity.enums.Type;
+import container.entity.enums.Status;
+import container.entity.enums.Type;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Table;
-import lombok.NoArgsConstructor;
+import lombok.Data;
 
 @Entity
-@NoArgsConstructor
+@Data
 @Table
 public class Devices {
 
@@ -27,29 +25,6 @@ public class Devices {
 	Status status;
 	@Id
 	@GeneratedValue
-	UUID id;
-
-	public void setType(Type type) {
-
-		this.type = type;
-
-	}
-
-	public void setStatus(Status status) {
-
-		this.status = status;
-
-	}
-
-	public Status getStatus() {
-
-		return status;
-
-	}
-
-	public Type getType() {
-
-		return type;
-	}
+	int id;
 
 }

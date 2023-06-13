@@ -1,14 +1,14 @@
-package service;
+package container.service;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import entity.User;
-import exception.UserAlreadyPresentException;
-import payload.UserPayload;
-import repository.UserRepository;
+import container.entity.User;
+import container.exception.UserAlreadyPresentException;
+import container.payload.UserPayload;
+import container.repository.UserRepository;
 
 public class UserService {
 

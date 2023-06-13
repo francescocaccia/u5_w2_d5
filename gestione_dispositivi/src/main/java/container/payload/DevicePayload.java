@@ -1,9 +1,9 @@
-package payload;
+package container.payload;
 
 import javax.validation.constraints.NotNull;
 
-import entity.enums.Status;
-import entity.enums.Type;
+import container.entity.enums.Status;
+import container.entity.enums.Type;
 import lombok.Data;
 
 //corrisponde al body di una richiesta http

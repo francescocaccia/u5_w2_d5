@@ -1,4 +1,4 @@
-package service;
+package container.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,9 +6,9 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import entity.Devices;
-import payload.DevicePayload;
-import repository.DevicesRepository;
+import container.entity.Devices;
+import container.payload.DevicePayload;
+import container.repository.DevicesRepository;
 
 public class DevicesService {
 

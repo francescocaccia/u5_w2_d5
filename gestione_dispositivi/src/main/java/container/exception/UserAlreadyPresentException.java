@@ -1,4 +1,4 @@
-package exception;
+package container.exception;
 
 public class UserAlreadyPresentException extends RuntimeException {
 

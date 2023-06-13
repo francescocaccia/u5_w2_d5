@@ -1,4 +1,4 @@
-package controller;
+package container.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import entity.Devices;
-import exception.UserAlreadyPresentException;
-import payload.DevicePayload;
-import service.DevicesService;
+import container.entity.Devices;
+import container.exception.UserAlreadyPresentException;
+import container.payload.DevicePayload;
+import container.service.DevicesService;
 
 @RestController
 @RequestMapping("/devices")

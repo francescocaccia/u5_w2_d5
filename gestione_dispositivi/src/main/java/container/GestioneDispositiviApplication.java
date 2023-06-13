@@ -1,4 +1,4 @@
-package u5_w2_d5.gestione_dispositivi;
+package container;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
